@@ -247,7 +247,7 @@ if(d.sex==='女性'){
 }
 return Math.round(Math.min(99,Math.max(55,x)));
 }
-function diagnose(){quiz.style.display='none';result.style.display='block';const b=String(d.ball||'よく分からない').replace(/^['"]|['"]$/g,'');type.textContent=b==='スライス'?'つかまり重視タイプ':b==='フェード'?'安定性重視タイプ':b==='フック'?'左ミス抑制タイプ':b==='ドロー'?'直進性重視タイプ':'バランス重視タイプ';summary.textContent=`HS ${d.speed||39}m/s前後・${b}を中心に判定。`;render('overall');}
+function diagnose(){quiz.style.display='none';result.style.display='block';cards.innerHTML='<p class="muted">ランキングを計算中...</p>';const b=String(d.ball||'よく分からない').replace(/^['"]|['"]$/g,'');type.textContent=b==='スライス'?'つかまり重視タイプ':b==='フェード'?'安定性重視タイプ':b==='フック'?'左ミス抑制タイプ':b==='ドロー'?'直進性重視タイプ':'バランス重視タイプ';summary.textContent=`HS ${d.speed||39}m/s前後・${b}を中心に判定。`;render('overall');}
 function render(m,clicked){
 mode=m;
 if(clicked){
@@ -276,6 +276,20 @@ document.querySelectorAll('.detailBtn').forEach(function(btn){
   btn.addEventListener('click',function(){showClubDetail(this.getAttribute('data-club-name'));});
 });
 }
+
+function clubImage(c){
+  const label = `${c.maker} ${c.name}`.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320">
+    <rect width="800" height="320" rx="24" fill="#f3f7f4"/>
+    <circle cx="125" cy="155" r="74" fill="#0b7a43" opacity=".12"/>
+    <path d="M108 85 C155 85 194 110 194 151 C194 191 156 214 112 214 C81 214 60 199 60 175 C60 149 83 133 112 133 L153 133 C147 112 129 101 108 101 Z" fill="#0b7a43"/>
+    <rect x="188" y="143" width="300" height="15" rx="7" fill="#5f6e66" transform="rotate(-10 188 143)"/>
+    <text x="250" y="125" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#12382a">${label}</text>
+    <text x="250" y="170" font-family="Arial, sans-serif" font-size="17" fill="#61746a">クラブ画像は順次追加予定</text>
+  </svg>`;
+  return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+}
+
 function reason(c){
   const b=String(d.ball||'よく分からない').replace(/^['"]|['"]$/g,'');
   const hs=Number(d.speed||39);
