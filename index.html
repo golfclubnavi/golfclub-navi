@@ -12,6 +12,22 @@
 .subBtn{display:block;text-align:center;text-decoration:none;border:1.5px solid #19723f;border-radius:12px;padding:13px;font-size:14px;font-weight:900;color:#19723f;background:#fff}
 .priceBtn{display:block;text-align:center;text-decoration:none;border-radius:12px;padding:13px;font-size:14px;font-weight:900;color:#fff;background:#19723f}
 .footer{padding:20px;text-align:center;color:#77827d;font-size:11px}
+
+.rankCountWrap{margin:12px 0 4px;display:flex;align-items:center;gap:8px;justify-content:flex-end}
+.rankCountWrap label{font-size:12px;color:#65736c;font-weight:800}
+.rankCount{border:1px solid #dbe4de;border-radius:9px;background:#fff;padding:8px 9px;font-weight:800;color:#173126}
+.card.compact{padding:12px}
+.card.compact .photoWrap{display:none}
+.card.compact .why{display:none}
+.card.compact .btn{padding:11px;font-size:14px}
+.card.compact h3{font-size:17px}
+.card.compact .score{font-size:22px}
+
+
+.adSlot{margin:18px 0;padding:18px 12px;border:1px dashed #b8c8be;border-radius:13px;background:#f8faf9;text-align:center;color:#718078;font-size:12px}
+.adSlot b{display:block;color:#4e6056;margin-bottom:4px}
+.buyGuide{margin-top:12px;padding:12px;border-radius:12px;background:#fff8e8;font-size:12px;color:#65552e}
+
 </style>
 </head>
 <body>
@@ -84,40 +100,56 @@
 
 <section class="section result" id="result">
 <h2>診断結果</h2>
-<div class="profile"><b id="type">安定性重視タイプ</b><br><span id="summary"></span></div>
+<div class="profile"><b id="type">安定性重視タイプ</b><br><span id="summary"></span></div><div class="adSlot" id="resultAd"><b>広告スペース</b>AdSense承認後に広告コードを設定できます</div>
 <div class="tabs">
 <button class="tab active" type="button" data-render="overall">🏆 総合</button>
 <button class="tab" type="button" data-render="cost">💰 コスパ</button>
 <button class="tab" type="button" data-render="new">🆕 最新</button>
 </div>
+<div class="rankCountWrap">
+<label for="rankCount">表示件数</label>
+<select id="rankCount" class="rankCount">
+<option value="3">TOP3</option>
+<option value="10">TOP10</option>
+<option value="20" selected>TOP20</option>
+</select>
+</div>
 <div id="cards"></div>
-<button class="btn restart" id="restartBtn" type="button">もう一度診断する</button>
+<div class="adSlot" id="rankingAd"><b>広告スペース</b>ランキング閲覧後に表示する広告枠</div><button class="btn restart" id="restartBtn" type="button">もう一度診断する</button>
 <p class="small">※独自スコアはクラブ特性と入力条件をもとにした目安です。フィッティングでは弾道・スピン量・打点等も確認すると精度が上がります。</p>
 </section>
-<div class="footer">ゴルフクラブ選び.com｜診断エンジン試作版<br>※商品情報・価格は変動する場合があります。</div>
+<div class="footer">ゴルフクラブ選び.com｜ドライバー診断 β版（TOP20対応）<br>※商品情報・価格は変動する場合があります。<br>※当サイトは今後アフィリエイト広告・ディスプレイ広告を利用する場合があります。</div>
 </div>
 
 <script>
 const d={};let step=0,mode='overall';
 const clubs=[
-{name:'G440 K',maker:'PING',year:2026,weight:301,loft:'9 / 10.5 / 12',grip:'超高MOI',forgive:5,draw:4,spin:3,speed:4,cost:2,official:'https://ping.com/en-us/golf-clubs/drivers/g440-k-driver'},
-{name:'G440 MAX',maker:'PING',year:2025,weight:301,loft:'9 / 10.5 / 12',grip:'高MOI',forgive:5,draw:3,spin:3,speed:4,cost:3},
-{name:'G440 SFT',maker:'PING',year:2025,weight:294,loft:'9 / 10.5',grip:'ドロー設計',forgive:5,draw:5,spin:4,speed:3,cost:3,official:'https://ping.com/en-us/golf-clubs/drivers/g440-sft-driver'},
-{name:'G440 LST',maker:'PING',year:2025,weight:310,loft:'7.5 / 9 / 10.5',grip:'低スピン',forgive:4,draw:1,spin:1,speed:5,cost:3},
-{name:'Qi4D MAX',maker:'TaylorMade',year:2026,weight:304,loft:'9 / 10.5 / 12',grip:'高MOI・高ドロー',forgive:5,draw:5,spin:3,speed:4,cost:2},
-{name:'Qi4D',maker:'TaylorMade',year:2026,weight:308,loft:'9 / 10.5',grip:'調整型',forgive:4,draw:3,spin:3,speed:5,cost:2},
-{name:'Qi4D LS',maker:'TaylorMade',year:2026,weight:310,loft:'9 / 10.5',grip:'低スピン',forgive:3,draw:1,spin:1,speed:5,cost:2},
-{name:'Qi4D MAX LITE',maker:'TaylorMade',year:2026,weight:275,loft:'9 / 10.5 / 12',grip:'軽量・高ドロー',forgive:5,draw:5,spin:4,speed:2,cost:2},
-{name:'RS MAX',maker:'PRGR',year:2026,weight:309,loft:'9 / 10.5',grip:'高寛容・直進',forgive:5,draw:3,spin:3,speed:4,cost:2},
-{name:'ELYTE X 10K',maker:'Callaway',year:2025,weight:315,loft:'9 / 10.5 / 12',grip:'ドローバイアス・10K',forgive:5,draw:5,spin:3,speed:4,cost:3},
-{name:'G430 MAX 10K',maker:'PING',year:2024,weight:302,loft:'9 / 10.5 / 12',grip:'10K・高MOI',forgive:5,draw:3,spin:3,speed:4,cost:5},
-{name:'G430 MAX',maker:'PING',year:2023,weight:302,loft:'9 / 10.5 / 12',grip:'高MOI',forgive:5,draw:3,spin:3,speed:4,cost:5}
+{name:'G440 K',maker:'PING',year:2026,weight:301,loft:'9 / 10.5 / 12',grip:'超高MOI',forgive:5,draw:4,spin:3,speed:40,cost:2,official:'https://ping.com/en-us/golf-clubs/drivers/g440-k-driver'},
+{name:'Qi4D MAX',maker:'TaylorMade',year:2026,weight:304,loft:'9 / 10.5 / 12',grip:'高MOI・高ドロー',forgive:5,draw:5,spin:3,speed:40,cost:2},
+{name:'Qi4D',maker:'TaylorMade',year:2026,weight:308,loft:'9 / 10.5',grip:'調整型・バランス',forgive:4,draw:3,spin:3,speed:43,cost:2},
+{name:'Qi4D LS',maker:'TaylorMade',year:2026,weight:310,loft:'9 / 10.5',grip:'低スピン・強弾道',forgive:3,draw:1,spin:1,speed:46,cost:2},
+{name:'Qi4D MAX LITE',maker:'TaylorMade',year:2026,weight:275,loft:'9 / 10.5 / 12',grip:'軽量・高ドロー',forgive:5,draw:5,spin:4,speed:35,cost:2},
+{name:'RS MAX',maker:'PRGR',year:2026,weight:309,loft:'9 / 10.5',grip:'高寛容・直進',forgive:5,draw:3,spin:3,speed:41,cost:2},
+{name:'XXIO 14',maker:'DUNLOP',year:2026,weight:285,loft:'9.5 / 10.5 / 11.5',grip:'軽量・高弾道',forgive:5,draw:4,spin:4,speed:36,cost:2},
+{name:'G440 MAX',maker:'PING',year:2025,weight:301,loft:'9 / 10.5 / 12',grip:'高MOI・バランス',forgive:5,draw:3,spin:3,speed:40,cost:3},
+{name:'G440 SFT',maker:'PING',year:2025,weight:294,loft:'9 / 10.5',grip:'ドロー設計',forgive:5,draw:5,spin:4,speed:38,cost:3,official:'https://ping.com/en-us/golf-clubs/drivers/g440-sft-driver'},
+{name:'G440 LST',maker:'PING',year:2025,weight:310,loft:'7.5 / 9 / 10.5',grip:'低スピン',forgive:4,draw:1,spin:1,speed:46,cost:3},
+{name:'ELYTE X 10K',maker:'Callaway',year:2025,weight:315,loft:'9 / 10.5 / 12',grip:'ドローバイアス・高MOI',forgive:5,draw:5,spin:3,speed:41,cost:3},
+{name:'ELYTE',maker:'Callaway',year:2025,weight:310,loft:'9 / 10.5 / 12',grip:'バランス・高初速',forgive:4,draw:3,spin:3,speed:43,cost:3},
+{name:'Qi35 MAX',maker:'TaylorMade',year:2025,weight:305,loft:'9 / 10.5 / 12',grip:'高MOI・直進',forgive:5,draw:4,spin:3,speed:40,cost:4},
+{name:'Qi35',maker:'TaylorMade',year:2025,weight:310,loft:'9 / 10.5',grip:'バランス・調整型',forgive:4,draw:3,spin:3,speed:43,cost:4},
+{name:'G430 MAX 10K',maker:'PING',year:2024,weight:302,loft:'9 / 10.5 / 12',grip:'10K・高MOI',forgive:5,draw:3,spin:3,speed:40,cost:5},
+{name:'Qi10 MAX',maker:'TaylorMade',year:2024,weight:306,loft:'9 / 10.5 / 12',grip:'10K・高MOI',forgive:5,draw:4,spin:3,speed:40,cost:5},
+{name:'PARADYM Ai SMOKE MAX D',maker:'Callaway',year:2024,weight:305,loft:'9 / 10.5 / 12',grip:'ドロー・寛容性',forgive:5,draw:5,spin:3,speed:39,cost:5},
+{name:'G430 MAX',maker:'PING',year:2023,weight:302,loft:'9 / 10.5 / 12',grip:'高MOI・安定',forgive:5,draw:3,spin:3,speed:40,cost:5},
+{name:'STEALTH 2 HD',maker:'TaylorMade',year:2023,weight:300,loft:'9 / 10.5 / 12',grip:'ドロー・高弾道',forgive:4,draw:5,spin:4,speed:39,cost:5},
+{name:'PARADYM X',maker:'Callaway',year:2023,weight:305,loft:'9 / 10.5 / 12',grip:'ドロー・高弾道',forgive:4,draw:5,spin:4,speed:39,cost:5}
 ];
 function start(){hero.style.display='none';quiz.style.display='block';}
 function show(n){document.querySelectorAll('.q').forEach((q,i)=>q.classList.toggle('active',i===n));step=n;progress.textContent=(n+1)+' / 6';bar.style.width=((n+1)/6*100)+'%';}
 function pick(k,v){d[k]=v;if(step<5){show(step+1)}else{diagnose()}}
 function nextNumber(k){const v=Number(document.getElementById(k).value);if(v){d[k]=v;show(step+1)}}
-function hsFit(hs,c){let target=c.speed;let hsScore=100-Math.min(35,Math.abs(target-hs)*14);return hsScore}
+function hsFit(hs,c){let diff=Math.abs(Number(c.speed)-Number(hs));return Math.max(20,100-diff*9)}
 function ballFit(ball,c){if(ball==='スライス')return c.draw*20;if(ball==='フェード')return c.draw*16+(c.forgive*3);if(ball==='フック')return (6-c.draw)*20;if(ball==='ドロー')return (6-Math.max(0,c.draw-3))*15+(c.forgive*2);return c.forgive*18}
 function calc(c){
 let hs=Number(d.speed||39),score=Number(d.avg||105),x=0;
@@ -129,18 +161,36 @@ x += Math.max(0,100-Math.abs(c.weight-weightTarget)*2)*0.10;
 x += c.forgive*2*0.05;
 return Math.round(Math.min(99,Math.max(60,x)));
 }
-function diagnose(){quiz.style.display='none';result.style.display='block';const b=d.ball||'よく分からない';type.textContent=b==='スライス'?'つかまり重視タイプ':b==='フェード'?'安定性重視タイプ':b==='フック'?'左ミス抑制タイプ':b==='ドロー'?'直進性重視タイプ':'バランス重視タイプ';summary.textContent=`HS ${d.speed||39}m/s前後・${b}を中心に判定。`;render('overall');}
+function diagnose(){quiz.style.display='none';result.style.display='block';const b=String(d.ball||'よく分からない').replace(/^['"]|['"]$/g,'');type.textContent=b==='スライス'?'つかまり重視タイプ':b==='フェード'?'安定性重視タイプ':b==='フック'?'左ミス抑制タイプ':b==='ドロー'?'直進性重視タイプ':'バランス重視タイプ';summary.textContent=`HS ${d.speed||39}m/s前後・${b}を中心に判定。`;render('overall');}
 function render(m,clicked){
-mode=m;if(clicked){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));clicked.classList.add('active')}
-let arr=clubs.map(c=>({...c,score:calc(c)}));
-if(m==='cost')arr=arr.map(c=>({...c,score:Math.round(c.score*0.75+c.cost*5)}));
-if(m==='new')arr=arr.filter(c=>c.year>=2026).sort((a,b)=>b.score-a.score);
-else arr.sort((a,b)=>b.score-a.score);
-arr=arr.slice(0,3);
-cards.innerHTML=arr.map((c,i)=>`<article class="card"><div class="photoWrap" style="margin:-2px -2px 12px"><img src="${clubImage(c)}" alt="${c.maker} ${c.name} クラブイメージ" style="height:120px;padding:8px"><div class="photoCaption">クラブイメージ</div></div><div class="rank">${['🥇 1位','🥈 2位','🥉 3位'][i]}｜${c.year}年モデル</div><h3>${c.maker} ${c.name}</h3><div class="score">${c.score}点</div><div class="spec"><span class="pill">${c.grip}</span><span class="pill">重量 約${c.weight}g</span><span class="pill">ロフト ${c.loft}°</span></div><div class="why"><b>おすすめ理由</b><br>${reason(c)}</div><button class="btn detailBtn" type="button" data-club-name="${c.name}">このクラブを詳しく見る</button></article>`).join('');
-  document.querySelectorAll('.detailBtn').forEach(function(btn){btn.addEventListener('click',function(){showClubDetail(this.getAttribute('data-club-name'));});});
+mode=m;
+if(clicked){
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  clicked.classList.add('active');
 }
-function reason(c){let b=d.ball||'よく分からない';if(b==='スライス'&&c.draw>=4)return'つかまり性能と寛容性を重視。右へのミスを抑えたい条件と相性が良い候補です。';if(b==='フック'&&c.draw<=2)return'つかまり過ぎを避け、左へのミスを抑えたい条件を優先した候補です。';if(c.speed>=5&&d.speed>=44)return'ヘッドスピードが高めの条件なので、重量・低スピン系の特性を優先しています。';if(c.weight<290&&d.speed<38)return'ヘッドスピードが低めの条件なので、軽量で振りやすい候補を優先しています。';return'ヘッドスピードへの適合、寛容性、持ち球との相性をバランスして選んだ候補です。';}
+let arr=clubs.map(c=>({...c,score:calc(c)}));
+if(m==='cost')arr=arr.map(c=>({...c,score:Math.round(c.score*0.78+c.cost*4.4)}));
+if(m==='new')arr=arr.filter(c=>c.year>=2026);
+arr.sort((a,b)=>b.score-a.score);
+const limit=Number(document.getElementById('rankCount')?.value||20);
+arr=arr.slice(0,Math.min(limit,arr.length));
+cards.innerHTML=arr.map((c,i)=>{
+  const top=i<3;
+  return `<article class="card ${top?'':'compact'}">
+    ${top?`<div class="photoWrap" style="margin:-2px -2px 12px"><img src="${clubImage(c)}" alt="${c.maker} ${c.name} クラブイメージ" style="height:120px;padding:8px"><div class="photoCaption">写真対応エリア（実物写真へ差し替え予定）</div></div>`:''}
+    <div class="rank">${i===0?'🥇':i===1?'🥈':i===2?'🥉':'#'+(i+1)} ${i+1}位｜${c.year}年モデル</div>
+    <h3>${c.maker} ${c.name}</h3>
+    <div class="score">${c.score}点</div>
+    <div class="spec"><span class="pill">${c.grip}</span><span class="pill">重量 約${c.weight}g</span><span class="pill">ロフト ${c.loft}°</span></div>
+    ${top?`<div class="why"><b>おすすめ理由</b><br>${reason(c)}</div>`:''}
+    <button class="btn detailBtn" type="button" data-club-name="${c.name}">このクラブを詳しく見る</button>
+  </article>`;
+}).join('');
+document.querySelectorAll('.detailBtn').forEach(function(btn){
+  btn.addEventListener('click',function(){showClubDetail(this.getAttribute('data-club-name'));});
+});
+}
+function reason(c){let b=String(d.ball||'よく分からない').replace(/^['"]|['"]$/g,'');if(b==='スライス'&&c.draw>=4)return'つかまり性能と寛容性を重視。右へのミスを抑えたい条件と相性が良い候補です。';if(b==='フック'&&c.draw<=2)return'つかまり過ぎを避け、左へのミスを抑えたい条件を優先した候補です。';if(c.speed>=5&&d.speed>=44)return'ヘッドスピードが高めの条件なので、重量・低スピン系の特性を優先しています。';if(c.weight<290&&d.speed<38)return'ヘッドスピードが低めの条件なので、軽量で振りやすい候補を優先しています。';return'ヘッドスピードへの適合、寛容性、持ち球との相性をバランスして選んだ候補です。';}
 
 function clubImage(c){
   const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 260">
@@ -164,7 +214,7 @@ function showClubDetail(name){
   const c=clubs.find(x=>x.name===name);
   if(!c)return;
   const detail=document.getElementById('clubDetail');
-  document.getElementById('detailContent').innerHTML=`<div class="photoWrap"><img src="${clubImage(c)}" alt="${c.maker} ${c.name} クラブイメージ"><div class="photoCaption">※現在はクラブイメージを表示しています。実物写真は順次追加予定です。</div></div><div class="rank">${c.year}年モデル</div><h2>${c.maker} ${c.name}</h2><div class="score">おすすめ度 ${calc(c)}点</div><div class="spec"><span class="pill">${c.grip}</span><span class="pill">重量 約${c.weight}g</span><span class="pill">ロフト ${c.loft}°</span></div><div class="why"><b>あなたにおすすめの理由</b><br>${reason(c)}</div><p>このクラブは診断結果をもとにしたおすすめ候補です。実際に購入する前に、試打やフィッティングで打ち出し・スピン・打点も確認するのがおすすめです。</p><div class="detailActions">${c.official?`<a class="subBtn" href="${c.official}" target="_blank" rel="noopener">公式サイトで詳しく見る</a>`:''}<a class="priceBtn" href="https://www.google.com/search?q=${encodeURIComponent(c.maker+' '+c.name+' 価格')}" target="_blank" rel="noopener">価格・販売店を調べる</a></div><button class="btn" type="button" id="closeDetailBtn" style="margin-top:10px">結果一覧に戻る</button>`;
+  document.getElementById('detailContent').innerHTML=`<div class="photoWrap"><img src="${clubImage(c)}" alt="${c.maker} ${c.name} クラブイメージ"><div class="photoCaption">※現在はクラブイメージを表示しています。実物写真は順次追加予定です。</div></div><div class="rank">${c.year}年モデル</div><h2>${c.maker} ${c.name}</h2><div class="score">おすすめ度 ${calc(c)}点</div><div class="spec"><span class="pill">${c.grip}</span><span class="pill">重量 約${c.weight}g</span><span class="pill">ロフト ${c.loft}°</span></div><div class="why"><b>あなたにおすすめの理由</b><br>${reason(c)}</div><p>このクラブは診断結果をもとにしたおすすめ候補です。実際に購入する前に、試打やフィッティングで打ち出し・スピン・打点も確認するのがおすすめです。</p><div class="buyGuide"><b>購入前に価格を比較</b><br>今後ここに楽天・Amazon・Yahoo!ショッピング等のアフィリエイトリンクを設定できます。</div><div class="detailActions">${c.official?`<a class="subBtn" href="${c.official}" target="_blank" rel="noopener noreferrer">公式サイトで詳しく見る</a>`:''}<a class="priceBtn" href="https://www.google.com/search?q=${encodeURIComponent(c.maker+' '+c.name+' 価格')}" target="_blank" rel="noopener noreferrer">価格・販売店を調べる</a></div><button class="btn" type="button" id="closeDetailBtn" style="margin-top:10px">結果一覧に戻る</button>`;
   detail.style.display='block';
   document.getElementById('result').style.display='none';
   window.scrollTo(0,0);
@@ -175,6 +225,12 @@ function showClubDetail(name){
 document.addEventListener('DOMContentLoaded', function(){
   document.getElementById('startBtn').addEventListener('click', start);
   document.getElementById('restartBtn').addEventListener('click', function(){ location.reload(); });
+
+  const rankCount=document.getElementById('rankCount');
+  if(rankCount){
+    rankCount.addEventListener('change',function(){render(mode);});
+  }
+
 
   document.querySelectorAll('[data-pick-key]').forEach(function(btn){
     btn.addEventListener('click', function(){
