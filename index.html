@@ -5,7 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>ゴルフクラブ選び.com｜ドライバー診断 第2版</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f4f7f5;color:#172b21;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP",sans-serif}.app{max-width:560px;margin:auto;min-height:100vh;background:#fff}header{padding:16px 20px;border-bottom:1px solid #e4ebe6;font-weight:900;font-size:20px}.hero{padding:30px 20px 26px;background:linear-gradient(#edf8f0,#fff);text-align:center}.badge{display:inline-block;padding:5px 10px;border-radius:99px;background:#dff1e5;color:#17643a;font-size:12px;font-weight:800}.hero h1{font-size:29px;line-height:1.35;margin:12px 0 8px}.muted{color:#66736d;font-size:14px}.btn{border:0;border-radius:13px;background:#19723f;color:#fff;width:100%;padding:15px;font-size:16px;font-weight:900}.section{padding:24px 20px;border-top:8px solid #f4f7f5}.quiz{display:none}.progress{font-size:12px;color:#6b7771}.track{height:6px;background:#e5ebe7;border-radius:99px;margin:8px 0 22px;overflow:hidden}.track span{display:block;height:100%;background:#19723f;width:16.7%}.q{display:none}.q.active{display:block}.q h2{font-size:21px;margin:0 0 15px}.opts{display:grid;gap:9px}.opt{border:1.5px solid #dce5df;background:#fff;border-radius:12px;padding:13px;text-align:left;font-weight:800;font-size:15px}.opt:active,.opt.sel{border-color:#19723f;background:#edf8f0}.input{width:100%;border:1.5px solid #dce5df;border-radius:12px;padding:14px;font-size:17px}.unit{font-size:14px;color:#69756f}.next{margin-top:15px}.result{display:none}.result h2{margin-top:0}.profile{background:#f1f7f3;border-radius:15px;padding:15px;margin:12px 0 18px}.profile b{font-size:19px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:15px 0}.tab{border:1px solid #dbe4de;background:#fff;border-radius:10px;padding:10px 4px;font-size:12px;font-weight:800}.tab.active{background:#19723f;color:#fff;border-color:#19723f}.card{border:1px solid #dce5df;border-radius:15px;padding:16px;margin:11px 0}.rank{font-size:13px;color:#5d6b63;font-weight:800}.card h3{margin:4px 0 7px;font-size:19px}.score{font-size:27px;font-weight:950;color:#19723f}.why{background:#f5f8f6;border-radius:10px;padding:10px;margin:10px 0;font-size:13px}.spec{display:flex;flex-wrap:wrap;gap:6px}.pill{background:#edf2ef;border-radius:99px;padding:4px 8px;font-size:11px}.small{font-size:11px;color:#718078}.restart{margin-top:15px;background:#fff;color:#19723f;border:1.5px solid #19723f}.photoWrap{margin:12px 0 16px;border:1px solid #dce5df;border-radius:14px;background:linear-gradient(180deg,#f7faf8,#eef4f0);overflow:hidden}
+*{box-sizing:border-box}body{margin:0;background:#f4f7f5;color:#172b21;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP",sans-serif}.app{max-width:560px;margin:auto;min-height:100vh;background:#fff}header{padding:16px 20px;border-bottom:1px solid #e4ebe6;font-weight:900;font-size:20px}.hero{padding:30px 20px 26px;background:linear-gradient(#edf8f0,#fff);text-align:center}.badge{display:inline-block;padding:5px 10px;border-radius:99px;background:#dff1e5;color:#17643a;font-size:12px;font-weight:800}.hero h1{font-size:29px;line-height:1.35;margin:12px 0 8px}.muted{color:#66736d;font-size:14px}.btn{border:0;border-radius:13px;background:#19723f;color:#fff;width:100%;padding:15px;font-size:16px;font-weight:900}.section{padding:24px 20px;border-top:8px solid #f4f7f5}.quiz{display:none}.progress{font-size:12px;color:#6b7771}.track{height:6px;background:#e5ebe7;border-radius:99px;margin:8px 0 22px;overflow:hidden}.track span{display:block;height:100%;background:#19723f;width:16.7%}.q{display:none}.q.active{display:block}.q h2{font-size:21px;margin:0 0 15px}.opts{display:grid;gap:9px}.opt{border:1.5px solid #dce5df;background:#fff;border-radius:12px;padding:13px;text-align:left;font-weight:800;font-size:15px}.opt:active,.opt.sel{border-color:#19723f;background:#edf8f0}.input{width:100%;border:1.5px solid #dce5df;border-radius:12px;padding:14px;font-size:17px}.unit{font-size:14px;color:#69756f}.next{margin-top:15px}
+.quizNav{display:grid;grid-template-columns:1fr;gap:9px;margin-top:15px}
+.backBtn{border:1.5px solid #19723f;border-radius:13px;background:#fff;color:#19723f;width:100%;padding:13px;font-size:15px;font-weight:900}
+.result{display:none}.result h2{margin-top:0}.profile{background:#f1f7f3;border-radius:15px;padding:15px;margin:12px 0 18px}.profile b{font-size:19px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:15px 0}.tab{border:1px solid #dbe4de;background:#fff;border-radius:10px;padding:10px 4px;font-size:12px;font-weight:800}.tab.active{background:#19723f;color:#fff;border-color:#19723f}.card{border:1px solid #dce5df;border-radius:15px;padding:16px;margin:11px 0}.rank{font-size:13px;color:#5d6b63;font-weight:800}.card h3{margin:4px 0 7px;font-size:19px}.score{font-size:27px;font-weight:950;color:#19723f}.why{background:#f5f8f6;border-radius:10px;padding:10px;margin:10px 0;font-size:13px}.spec{display:flex;flex-wrap:wrap;gap:6px}.pill{background:#edf2ef;border-radius:99px;padding:4px 8px;font-size:11px}.small{font-size:11px;color:#718078}.restart{margin-top:15px;background:#fff;color:#19723f;border:1.5px solid #19723f}.photoWrap{margin:12px 0 16px;border:1px solid #dce5df;border-radius:14px;background:linear-gradient(180deg,#f7faf8,#eef4f0);overflow:hidden}
 .photoWrap img{display:block;width:100%;height:190px;object-fit:contain;padding:16px}
 .photoCaption{padding:8px 12px;background:#fff;border-top:1px solid #e6ece8;font-size:11px;color:#6b7771;text-align:center}
 .detailActions{display:grid;gap:9px;margin-top:14px}
@@ -28,6 +31,19 @@
 .adSlot b{display:block;color:#4e6056;margin-bottom:4px}
 .buyGuide{margin-top:12px;padding:12px;border-radius:12px;background:#fff8e8;font-size:12px;color:#65552e}
 
+
+.guideHero{padding:28px 20px;background:linear-gradient(#f4faf6,#fff)}
+.guideGrid{display:grid;gap:12px;margin-top:16px}
+.guideCard{border:1px solid #dce5df;border-radius:14px;padding:16px;background:#fff}
+.guideCard h3{margin:0 0 8px;font-size:18px}
+.guideCard p{margin:0;color:#5f6e66;font-size:14px;line-height:1.7}
+.guideTable{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+.guideTable th,.guideTable td{border-bottom:1px solid #e4ebe6;padding:10px 6px;text-align:left}
+.guideTable th{background:#f5f8f6}
+.navLinks{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.navLink{border:1px solid #cfdcd4;border-radius:99px;padding:8px 11px;text-decoration:none;color:#19723f;font-size:12px;font-weight:800;background:#fff}
+.guideCta{margin-top:18px;padding:18px;border-radius:15px;background:#edf8f0;text-align:center}
+.guideCta h3{margin:0 0 7px}
 </style>
 </head>
 <body>
@@ -37,8 +53,31 @@
 <span class="badge">完全無料・登録不要</span>
 <h1>あなたに合う<br>ドライバー診断</h1>
 <p class="muted">ヘッドスピードと持ち球を中心に、新旧モデルから相性の良いクラブを探します。</p>
-<button class="btn" id="startBtn" type="button">無料診断を始める</button>
+<button class="btn" id="startBtn" type="button">無料診断を始める</button><div class="navLinks" style="justify-content:center"><button class="navLink" id="guideBtn" type="button">初心者向け｜クラブの選び方を見る</button></div>
 <p class="small">約1分・6問</p>
+</section>
+
+
+<section class="section" id="guide" style="display:none">
+<div class="guideHero">
+<span class="badge">初心者向けガイド</span>
+<h2>ドライバー選びで<br>失敗しないための基本</h2>
+<p class="muted">スペック表だけでは分かりにくいポイントを、できるだけ簡単にまとめました。</p>
+</div>
+<div class="guideGrid">
+<div class="guideCard"><h3>🏌️ ドライバーとは？</h3><p>ティーショットで飛距離を出すためのクラブです。ただし「一番飛ぶモデル」より、自分のスイングで芯に当たりやすく、曲がり幅を抑えられるモデルを選ぶことが重要です。</p></div>
+<div class="guideCard"><h3>📐 ロフト角とは？</h3><p>フェースの傾きを表す数字です。一般にロフトが大きいほど球を上げやすく、小さいほど強い弾道になりやすい傾向があります。ヘッドスピードだけで決めず、実際の打ち出し角も確認すると選びやすくなります。</p></div>
+<div class="guideCard"><h3>⚙️ シャフトのR・SR・S</h3><p>シャフトの硬さを示す代表的な表記です。ただし同じ「S」でもメーカーや製品によって硬さ・重量・しなり方は異なります。フレックス表記だけで決めないことがポイントです。</p>
+<table class="guideTable"><tr><th>目安</th><th>考え方</th></tr><tr><td>R</td><td>振りやすさを重視したい人</td></tr><tr><td>SR</td><td>RとSの中間を探している人</td></tr><tr><td>S</td><td>しっかり振る人の候補</td></tr></table></div>
+<div class="guideCard"><h3>💨 ヘッドスピード</h3><p>当サイトでは特に重要な診断項目です。速い・遅いだけでなく、クラブ重量やシャフトとの組み合わせも重要です。無理に重いクラブを選ぶと振り切れず、軽すぎるとタイミングが合わない場合があります。</p></div>
+<div class="guideCard"><h3>↗️ スライスが多い人</h3><p>右に曲がるミスが多い場合は、つかまりの良いヘッドやドローバイアス設計が候補になります。ただし原因がスイングにある場合もあるため、クラブだけで完全に直すものではありません。</p></div>
+<div class="guideCard"><h3>↙️ フックが多い人</h3><p>左へのミスが多い場合は、つかまり過ぎないニュートラル〜低スピン系のモデルが候補になります。強いドローバイアスモデルは慎重に選びましょう。</p></div>
+<div class="guideCard"><h3>🪶 軽いクラブと重いクラブ</h3><p>軽量モデルは振り抜きやすさがメリット。重量のあるモデルは速いスイングでも安定しやすい傾向があります。体格だけでなく、ヘッドスピードや振りやすさを合わせて判断します。</p></div>
+<div class="guideCard"><h3>🆕 最新モデル vs 型落ち</h3><p>最新モデルだけが正解ではありません。型落ちモデルでも自分との相性が良く、価格が下がっていれば非常に有力です。そのため当サイトでは新旧モデルを一緒に診断候補にしています。</p></div>
+<div class="guideCard"><h3>🔰 初心者が注意したいこと</h3><p>「上級者が使っている」「飛距離性能が高い」という理由だけで選ばず、まずはミスへの強さ・振りやすさ・球の上がりやすさを重視するのがおすすめです。可能なら購入前に試打してください。</p></div>
+</div>
+<div class="guideCta"><h3>自分の場合はどれが合う？</h3><p class="muted">6問に答えると、登録37モデルから相性TOP20を表示します。</p><button class="btn" id="guideStartBtn" type="button">無料ドライバー診断をする</button></div>
+<button class="backBtn" id="guideHomeBtn" type="button" style="margin-top:12px">← トップに戻る</button>
 </section>
 
 <section class="section quiz" id="quiz">
@@ -52,13 +91,13 @@
 <div class="q">
 <h2>② 身長を教えてください</h2>
 <input class="input" id="height" type="number" inputmode="numeric" placeholder="例：175"><span class="unit"> cm</span>
-<button class="btn next" type="button" data-next-number="height">次へ</button>
+<div class="quizNav"><button class="btn next" type="button" data-next-number="height">次へ</button><button class="backBtn" type="button" data-back>← 前の質問に戻る</button></div>
 </div>
 
 <div class="q">
 <h2>③ 体重を教えてください</h2>
 <input class="input" id="weight" type="number" inputmode="numeric" placeholder="例：70"><span class="unit"> kg</span>
-<button class="btn next" type="button" data-next-number="weight">次へ</button>
+<div class="quizNav"><button class="btn next" type="button" data-next-number="weight">次へ</button><button class="backBtn" type="button" data-back>← 前の質問に戻る</button></div>
 </div>
 
 <div class="q">
@@ -71,7 +110,7 @@
 <button class="opt" type="button" data-pick-key="speed" data-pick-value="45">44〜46 m/s</button>
 <button class="opt" type="button" data-pick-key="speed" data-pick-value="48">47 m/s〜</button>
 <button class="opt" type="button" data-pick-key="speed" data-pick-value="39">分からない</button>
-</div></div>
+</div><div class="quizNav"><button class="backBtn" type="button" data-back>← 前の質問に戻る</button></div></div>
 
 <div class="q">
 <h2>⑤ 平均スコアは？</h2>
@@ -82,7 +121,7 @@
 <button class="opt" type="button" data-pick-key="avg" data-pick-value="115">110〜119</button>
 <button class="opt" type="button" data-pick-key="avg" data-pick-value="125">120〜129</button>
 <button class="opt" type="button" data-pick-key="avg" data-pick-value="135">130〜</button>
-</div></div>
+</div><div class="quizNav"><button class="backBtn" type="button" data-back>← 前の質問に戻る</button></div></div>
 
 <div class="q">
 <h2>⑥ 持ち球は？ ⭐</h2>
@@ -93,7 +132,7 @@
 <button class="opt" type="button" data-pick-key="ball" data-pick-value="'ドロー'">ドロー</button>
 <button class="opt" type="button" data-pick-key="ball" data-pick-value="'フック'">フック</button>
 <button class="opt" type="button" data-pick-key="ball" data-pick-value="'よく分からない'">よく分からない</button>
-</div></div>
+</div><div class="quizNav"><button class="backBtn" type="button" data-back>← 前の質問に戻る</button></div></div>
 </section>
 
 <section class="section" id="clubDetail" style="display:none"><h2>クラブ詳細</h2><div class="card" id="detailContent"></div></section>
@@ -170,9 +209,14 @@ const clubs=[
 {name:'ZXi LS',maker:'SRIXON',year:2025,weight:312,loft:'9 / 10.5',grip:'低スピン',forgive:3,draw:1,spin:1,speed:46,cost:3,rakuten:'https://a.r10.to/hPMA7Q'},
 {name:'ZXi TR',maker:'SRIXON',year:2025,weight:313,loft:'9 / 10.5',grip:'操作性・強弾道',forgive:3,draw:2,spin:2,speed:45,cost:3,rakuten:'https://a.r10.to/hPXSrK'}
 ];
-function start(){hero.style.display='none';quiz.style.display='block';}
+function start(){hero.style.display='none';guide.style.display='none';quiz.style.display='block';window.scrollTo(0,0);}
+function openGuide(){hero.style.display='none';quiz.style.display='none';result.style.display='none';clubDetail.style.display='none';guide.style.display='block';window.scrollTo(0,0);}
+function closeGuide(){guide.style.display='none';hero.style.display='block';window.scrollTo(0,0);}
 function show(n){document.querySelectorAll('.q').forEach((q,i)=>q.classList.toggle('active',i===n));step=n;progress.textContent=(n+1)+' / 6';bar.style.width=((n+1)/6*100)+'%';}
 function pick(k,v){d[k]=v;if(step<5){show(step+1)}else{diagnose()}}
+function goBack(){
+  if(step>0){show(step-1);window.scrollTo(0,0);}
+}
 function nextNumber(k){const v=Number(document.getElementById(k).value);if(v){d[k]=v;show(step+1)}}
 function hsFit(hs,c){let diff=Math.abs(Number(c.speed)-Number(hs));return Math.max(20,100-diff*9)}
 function ballFit(ball,c){if(ball==='スライス')return c.draw*20;if(ball==='フェード')return c.draw*16+(c.forgive*3);if(ball==='フック')return (6-c.draw)*20;if(ball==='ドロー')return (6-Math.max(0,c.draw-3))*15+(c.forgive*2);return c.forgive*18}
@@ -215,24 +259,70 @@ document.querySelectorAll('.detailBtn').forEach(function(btn){
   btn.addEventListener('click',function(){showClubDetail(this.getAttribute('data-club-name'));});
 });
 }
-function reason(c){let b=String(d.ball||'よく分からない').replace(/^['"]|['"]$/g,'');if(b==='スライス'&&c.draw>=4)return'つかまり性能と寛容性を重視。右へのミスを抑えたい条件と相性が良い候補です。';if(b==='フック'&&c.draw<=2)return'つかまり過ぎを避け、左へのミスを抑えたい条件を優先した候補です。';if(c.speed>=44&&d.speed>=44)return'ヘッドスピードが高めの条件なので、重量・低スピン系の特性を優先しています。';if(c.weight<290&&d.speed<38)return'ヘッドスピードが低めの条件なので、軽量で振りやすい候補を優先しています。';return'ヘッドスピードへの適合、寛容性、持ち球との相性をバランスして選んだ候補です。';}
+function reason(c){
+  const b=String(d.ball||'よく分からない').replace(/^['"]|['"]$/g,'');
+  const hs=Number(d.speed||39);
+  const avg=Number(d.avg||105);
+  const parts=[];
 
-function clubImage(c){
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 260">
-  <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#eef5f0"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs>
-  <rect width="700" height="260" fill="url(#g)"/>
-  <g transform="translate(80,20) rotate(-8 270 110)">
-    <rect x="245" y="65" width="22" height="170" rx="10" fill="#8b8f8c"/>
-    <rect x="250" y="105" width="12" height="130" rx="6" fill="#303633"/>
-    <ellipse cx="350" cy="65" rx="115" ry="62" fill="#1e2824"/>
-    <ellipse cx="350" cy="57" rx="105" ry="52" fill="#27352f"/>
-    <path d="M260 70 Q350 130 440 70" fill="none" stroke="#6f7d76" stroke-width="3"/>
-    <circle cx="425" cy="55" r="9" fill="#dfe7e2"/>
-    <text x="350" y="63" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#e9efeb">${c.maker}</text>
-  </g>
-  <text x="350" y="238" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="#65736c">クラブイメージ</text>
-  </svg>`;
-  return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
+  // 1) ヘッドスピード適性
+  const diff=Math.abs(Number(c.speed)-hs);
+  if(diff<=1){
+    parts.push(`ヘッドスピード${hs}m/s前後に対して、${c.name}の想定スピード帯がかなり近く、振り切りやすさと安定感の両立が期待できます。`);
+  }else if(diff<=3){
+    parts.push(`ヘッドスピード${hs}m/s前後でも扱いやすい範囲に入り、極端に重すぎたり軽すぎたりしにくい候補です。`);
+  }else if(c.speed>hs){
+    parts.push(`ややしっかりめの特性ですが、方向性や当たり負けの少なさを重視したい場合に候補になります。`);
+  }else{
+    parts.push(`比較的振りやすい特性で、力まずヘッドスピードを出したい場合に合わせやすい候補です。`);
+  }
+
+  // 2) 持ち球適性
+  if(b==='スライス'){
+    if(c.draw>=5) parts.push(`強めのつかまり性能があり、右へのミスを抑えながらボールをつかまえたい条件と特に相性が良いです。`);
+    else if(c.draw>=4) parts.push(`つかまりを補いやすい設計なので、スライス傾向を和らげたいゴルファーに向いています。`);
+    else if(c.draw<=2) parts.push(`つかまりは控えめなので、スライス矯正目的よりも、左へのミスを嫌う方向けの性格です。`);
+    else parts.push(`つかまりはニュートラル寄りで、スライスを抑えつつ過度なドローを避けたい場合に合わせやすいです。`);
+  }else if(b==='フェード'){
+    if(c.draw>=4) parts.push(`フェードを残しつつ右への曲がり幅を抑えたい場合に、つかまり性能が良い補助になります。`);
+    else parts.push(`フェード系の持ち球を大きく変えず、方向性を安定させたい条件に合わせやすいです。`);
+  }else if(b==='フック'){
+    if(c.draw<=2) parts.push(`つかまり過ぎを抑えやすく、左へのミスを減らしたい条件と相性が良いです。`);
+    else if(c.draw>=4) parts.push(`つかまりが強めなので、フック傾向が強い場合は左へのミスが増えないか試打で確認したいモデルです。`);
+    else parts.push(`極端なドローバイアスではないため、フックを悪化させにくいバランス型の候補です。`);
+  }else if(b==='ドロー'){
+    if(c.draw<=2) parts.push(`左へのつかまり過ぎを抑えやすく、持ち球のドローをコントロールしたい場合に向いています。`);
+    else parts.push(`ドロー系の球筋を活かしながら、寛容性や直進性も確保しやすい候補です。`);
+  }else if(b==='ストレート'){
+    parts.push(`ニュートラルな球筋を活かしやすく、特定方向へのバイアスよりも総合バランスで選びやすいモデルです。`);
+  }else{
+    parts.push(`持ち球がまだ定まっていない場合でも、寛容性と扱いやすさを優先して候補化しています。`);
+  }
+
+  // 3) 平均スコアによる補正
+  if(avg>=120 && c.forgive>=5){
+    parts.push(`平均スコア${avg}前後なら、芯を外したときの寛容性が高い点も大きなメリットです。`);
+  }else if(avg>=105 && c.forgive>=4){
+    parts.push(`ミスヒット時の曲がり幅を抑えやすく、スコアの安定につなげやすいタイプです。`);
+  }else if(avg<100 && c.forgive<=3){
+    parts.push(`操作性や弾道コントロールを重視しやすく、ある程度打点が安定しているゴルファー向けの性格です。`);
+  }else if(avg<100 && c.forgive>=4){
+    parts.push(`安定性を確保しつつ、スコア100切り前後でも扱いやすいバランスがあります。`);
+  }
+
+  // 4) スピン・重量の補足
+  if(c.spin<=1 && hs>=44){
+    parts.push(`低スピン寄りなので、ヘッドスピードが高めで吹け上がりを抑えたい場合にメリットがあります。`);
+  }else if(c.spin>=4 && hs<=40){
+    parts.push(`球を上げやすい傾向があり、キャリーを出したいヘッドスピード帯に合わせやすいです。`);
+  }
+  if(c.weight<=290 && hs<=38){
+    parts.push(`軽量設計で振り抜きやすく、ヘッドスピードを無理なく出したい人にも向いています。`);
+  }else if(c.weight>=310 && hs>=44){
+    parts.push(`重量感があるため、速めのスイングでも当たり負けしにくく、振り急ぎを抑えやすいです。`);
+  }
+
+  return parts.slice(0,4).join(' ');
 }
 
 function showClubDetail(name){
@@ -249,6 +339,9 @@ function showClubDetail(name){
 // Mobile/Safari-safe event binding: do not depend on inline onclick/global scope.
 document.addEventListener('DOMContentLoaded', function(){
   document.getElementById('startBtn').addEventListener('click', start);
+  document.getElementById('guideBtn').addEventListener('click', openGuide);
+  document.getElementById('guideStartBtn').addEventListener('click', start);
+  document.getElementById('guideHomeBtn').addEventListener('click', closeGuide);
   document.getElementById('restartBtn').addEventListener('click', function(){ location.reload(); });
 
   const rankCount=document.getElementById('rankCount');
@@ -271,6 +364,10 @@ document.addEventListener('DOMContentLoaded', function(){
     btn.addEventListener('click', function(){
       nextNumber(this.getAttribute('data-next-number'));
     });
+  });
+
+  document.querySelectorAll('[data-back]').forEach(function(btn){
+    btn.addEventListener('click', goBack);
   });
 
   document.querySelectorAll('[data-render]').forEach(function(btn){
