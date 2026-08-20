@@ -74,6 +74,8 @@
 </div></div>
 </section>
 
+<section class="section" id="clubDetail" style="display:none"><h2>クラブ詳細</h2><div class="card" id="detailContent"></div></section>
+
 <section class="section result" id="result">
 <h2>診断結果</h2>
 <div class="profile"><b id="type">安定性重視タイプ</b><br><span id="summary"></span></div>
@@ -129,9 +131,21 @@ if(m==='cost')arr=arr.map(c=>({...c,score:Math.round(c.score*0.75+c.cost*5)}));
 if(m==='new')arr=arr.filter(c=>c.year>=2026).sort((a,b)=>b.score-a.score);
 else arr.sort((a,b)=>b.score-a.score);
 arr=arr.slice(0,3);
-cards.innerHTML=arr.map((c,i)=>`<article class="card"><div class="rank">${['🥇 1位','🥈 2位','🥉 3位'][i]}｜${c.year}年モデル</div><h3>${c.maker} ${c.name}</h3><div class="score">${c.score}点</div><div class="spec"><span class="pill">${c.grip}</span><span class="pill">重量 約${c.weight}g</span><span class="pill">ロフト ${c.loft}°</span></div><div class="why"><b>おすすめ理由</b><br>${reason(c)}</div><button class="btn">このクラブを詳しく見る</button></article>`).join('');
+cards.innerHTML=arr.map((c,i)=>`<article class="card"><div class="rank">${['🥇 1位','🥈 2位','🥉 3位'][i]}｜${c.year}年モデル</div><h3>${c.maker} ${c.name}</h3><div class="score">${c.score}点</div><div class="spec"><span class="pill">${c.grip}</span><span class="pill">重量 約${c.weight}g</span><span class="pill">ロフト ${c.loft}°</span></div><div class="why"><b>おすすめ理由</b><br>${reason(c)}</div><button class="btn detailBtn" type="button" data-club-name="${c.name}">このクラブを詳しく見る</button></article>`).join('');
+  document.querySelectorAll('.detailBtn').forEach(function(btn){btn.addEventListener('click',function(){showClubDetail(this.getAttribute('data-club-name'));});});
 }
 function reason(c){let b=d.ball||'よく分からない';if(b==='スライス'&&c.draw>=4)return'つかまり性能と寛容性を重視。右へのミスを抑えたい条件と相性が良い候補です。';if(b==='フック'&&c.draw<=2)return'つかまり過ぎを避け、左へのミスを抑えたい条件を優先した候補です。';if(c.speed>=5&&d.speed>=44)return'ヘッドスピードが高めの条件なので、重量・低スピン系の特性を優先しています。';if(c.weight<290&&d.speed<38)return'ヘッドスピードが低めの条件なので、軽量で振りやすい候補を優先しています。';return'ヘッドスピードへの適合、寛容性、持ち球との相性をバランスして選んだ候補です。';}
+
+function showClubDetail(name){
+  const c=clubs.find(x=>x.name===name);
+  if(!c)return;
+  const detail=document.getElementById('clubDetail');
+  document.getElementById('detailContent').innerHTML=`<div class="rank">${c.year}年モデル</div><h2>${c.maker} ${c.name}</h2><div class="score">おすすめ度 ${calc(c)}点</div><div class="spec"><span class="pill">${c.grip}</span><span class="pill">重量 約${c.weight}g</span><span class="pill">ロフト ${c.loft}°</span></div><div class="why"><b>あなたにおすすめの理由</b><br>${reason(c)}</div><p>このクラブは診断結果をもとにしたおすすめ候補です。実際に購入する前に、試打やフィッティングで打ち出し・スピン・打点も確認するのがおすすめです。</p><button class="btn" type="button" id="closeDetailBtn">結果一覧に戻る</button>`;
+  detail.style.display='block';
+  document.getElementById('result').style.display='none';
+  window.scrollTo(0,0);
+  document.getElementById('closeDetailBtn').addEventListener('click',function(){detail.style.display='none';document.getElementById('result').style.display='block';window.scrollTo(0,0);});
+}
 
 // Mobile/Safari-safe event binding: do not depend on inline onclick/global scope.
 document.addEventListener('DOMContentLoaded', function(){
