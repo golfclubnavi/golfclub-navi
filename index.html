@@ -164,6 +164,17 @@
 
 <script>
 const d={};let step=0,mode='overall';
+const hero=document.getElementById('hero');
+const guide=document.getElementById('guide');
+const quiz=document.getElementById('quiz');
+const result=document.getElementById('result');
+const clubDetail=document.getElementById('clubDetail');
+const progress=document.getElementById('progress');
+const bar=document.getElementById('bar');
+const type=document.getElementById('type');
+const summary=document.getElementById('summary');
+const cards=document.getElementById('cards');
+const detailBody=document.getElementById('detailBody');
 const clubs=[
 {name:'G440 K',maker:'PING',year:2026,weight:301,loft:'9 / 10.5 / 12',grip:'超高MOI',forgive:5,draw:4,spin:3,speed:40,cost:2,rakuten:'https://a.r10.to/hR8hXt'},
 {name:'Qi4D MAX',maker:'TaylorMade',year:2026,weight:304,loft:'9 / 10.5 / 12',grip:'高MOI・高ドロー',forgive:5,draw:5,spin:3,speed:40,cost:2,rakuten:'https://a.r10.to/h5ygwP'},
@@ -249,6 +260,7 @@ return Math.round(Math.min(99,Math.max(55,x)));
 }
 function diagnose(){quiz.style.display='none';result.style.display='block';cards.innerHTML='<p class="muted">ランキングを計算中...</p>';const b=String(d.ball||'よく分からない').replace(/^['"]|['"]$/g,'');type.textContent=b==='スライス'?'つかまり重視タイプ':b==='フェード'?'安定性重視タイプ':b==='フック'?'左ミス抑制タイプ':b==='ドロー'?'直進性重視タイプ':'バランス重視タイプ';summary.textContent=`HS ${d.speed||39}m/s前後・${b}を中心に判定。`;render('overall');}
 function render(m,clicked){
+try{
 mode=m;
 if(clicked){
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
@@ -275,6 +287,10 @@ cards.innerHTML=arr.map((c,i)=>{
 document.querySelectorAll('.detailBtn').forEach(function(btn){
   btn.addEventListener('click',function(){showClubDetail(this.getAttribute('data-club-name'));});
 });
+}catch(err){
+  console.error(err);
+  cards.innerHTML='<div class="why"><b>表示エラー</b><br>ランキング表示処理でエラーが発生しました。ページを再読み込みしてください。</div>';
+}
 }
 
 function clubImage(c){
