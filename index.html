@@ -294,6 +294,9 @@ document.querySelectorAll('.detailBtn').forEach(function(btn){
 }
 
 function clubImage(c){
+  if(c.maker==='PING' && c.name==='G440 MAX'){
+    return 'IMG_4653.webp';
+  }
   const label = `${c.maker} ${c.name}`.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320">
     <rect width="800" height="320" rx="24" fill="#f3f7f4"/>
